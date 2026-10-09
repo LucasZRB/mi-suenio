@@ -16,8 +16,10 @@ export const theme = {
   },
   shadows: {
     black30: '0 4px 12px rgba(0, 0, 0, 0.30)',
+    black20: '0 4px 4px rgba(0, 0, 0, 0.20)',
     oro20: '0 4px 12px rgba(201, 169, 110, 0.20)',
     oro50: '0 4px 12px rgba(201, 169, 110, 0.50)',
+    rosa20: '0 4px 12px rgba(212, 120, 142, 0.20)',
     rosa50: '0 4px 12px rgba(212, 120, 142, 0.50)'
   },
   // Media query para adaptar fácilmente de dispositivos

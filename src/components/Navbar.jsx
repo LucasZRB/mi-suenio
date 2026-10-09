@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShop, faBars, faXmark, faHouse, faStore } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar() {
   const [location] = useLocation();
@@ -27,8 +27,7 @@ export default function Navbar() {
   return (
     <NavContainer>
       <LogoContainer>
-        <FontAwesomeIcon icon={faShop} />
-        <span>NUESTRA TIENDA</span>
+        <span>Mi Sueño</span>
       </LogoContainer>
       
       {/* Botón de Hamburguesa - Solo visible en pantallas Mobile */}
@@ -43,16 +42,16 @@ export default function Navbar() {
       <NavMenu ref={menuRef} $isOpen={isOpen}>
         <NavLinks>
           <StyledLink href="/" $isActive={location === '/'} onClick={closeMenu}>
-            <FontAwesomeIcon icon={faHouse} /> Inicio
+            Inicio
           </StyledLink>
           <StyledLink href="/productos" $isActive={location === '/productos'} onClick={closeMenu}>
-            <FontAwesomeIcon icon={faStore} /> Productos
+            Contactos
           </StyledLink>
         </NavLinks>
 
         {/* CTA Llamativo final */}
         <CtaButton href="/#contacto" onClick={closeMenu}>
-          ¡Visítanos Hoy!
+          Promociones
         </CtaButton>
       </NavMenu>
     </NavContainer>
@@ -65,34 +64,41 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  background-color: ${props => props.theme.colors.marronOscuro};
-  color: ${props => props.theme.colors.white};
-  box-shadow: ${props => props.theme.shadows.black30};
+  padding: 16px 64px;
+  background-color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.shadows.black20};
+  border-bottom: 1px solid ${props => props.theme.colors.rosaPardo};
   position: relative;
   z-index: 100;
+
+  ${props => props.theme.breakpoints.tablet} {
+    padding: 16px 32px;
+  }
+
+  ${props => props.theme.breakpoints.mobile} {
+    padding: 16px 16px;
+  }
 `;
 
 const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-family: ${props => props.theme.fonts.title};
-  font-size: ${props => props.theme.fontSizes.lg};
-  font-weight: bold;
-  color: ${props => props.theme.colors.oro};
-  svg { font-size: ${props => props.theme.fontSizes.xl}; }
+  /* No se ve mal de esta forma, pero comparálo por las dudas
+  a ver si mantenemos este o dejamos el que elejiste */
+  /* font-size: ${props => props.theme.fontSizes.lg};
+  font-weight: bold; */
+  font-size: ${props => props.theme.fontSizes.xl};
+  color: ${props => props.theme.colors.marronOscuro};
 `;
 
 const Hamburger = styled.button`
   display: none;
   background: none;
   border: none;
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.marronOscuro};
   font-size: ${props => props.theme.fontSizes.xl};
   cursor: pointer;
 
-  ${props => props.theme.breakpoints.tablet} {
+  ${props => props.theme.breakpoints.mobile} {
     display: block;
     z-index: 102;
   }
@@ -100,7 +106,7 @@ const Hamburger = styled.button`
 
 const Backdrop = styled.div`
   display: none;
-  ${props => props.theme.breakpoints.tablet} {
+  ${props => props.theme.breakpoints.mobile} {
     display: ${props => props.$show ? 'block' : 'none'};
     position: fixed;
     top: 0;
@@ -115,19 +121,19 @@ const Backdrop = styled.div`
 const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 64px;
 
-  ${props => props.theme.breakpoints.tablet} {
+  ${props => props.theme.breakpoints.mobile} {
     position: fixed;
     top: 0;
     right: 0;
     width: 50%; /* Ocupa la mitad de la pantalla */
     height: 100vh;
-    background-color: ${props => props.theme.colors.marronOscuro};
+    background-color: ${props => props.theme.colors.white};
     flex-direction: column;
     align-items: flex-start;
     padding: 100px 30px;
-    gap: 30px;
+    gap: 10px;
     z-index: 101;
     box-shadow: ${props => props.theme.shadows.black30};
     
@@ -139,45 +145,46 @@ const NavMenu = styled.div`
 
 const NavLinks = styled.div`
   display: flex;
-  gap: 30px;
+  gap: 64px;
 
-  ${props => props.theme.breakpoints.tablet} {
+  ${props => props.theme.breakpoints.mobile} {
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    gap: 10 px;
   }
 `;
 
 const StyledLink = styled(Link)`
   font-family: ${props => props.theme.fonts.body};
   font-size: ${props => props.theme.fontSizes.sm};
-  color: ${props => props.$isActive ? props.theme.colors.oro : props.theme.colors.white};
+  color: ${props => props.$isActive ? props.theme.colors.rosaPardo : props.theme.colors.marronOscuro};
   text-decoration: none;
   font-weight: ${props => props.$isActive ? 'bold' : 'normal'};
-  display: flex;
-  align-items: center;
-  gap: 8px;
   transition: color 0.2s ease-in-out;
 
   &:hover {
-    color: ${props => props.theme.colors.rosaPardo};
+    color: ${props => props.theme.colors.oro};
   }
 `;
 
 const CtaButton = styled.a`
   font-family: ${props => props.theme.fonts.body};
   font-size: ${props => props.theme.fontSizes.xs};
-  background-color: ${props => props.theme.colors.oro};
-  color: ${props => props.theme.colors.marronOscuro};
-  padding: 10px 20px;
-  border-radius: 4px;
+  background-color: ${props => props.theme.colors.rosaPardo};
+  color: ${props => props.theme.colors.white};
+  padding: 16px 32px;
+  border-radius: 32px;
+  /* Este también, comprueba si te gusta más con
+  o sin el bold */
   font-weight: bold;
-  box-shadow: ${props => props.theme.shadows.oro20};
+  box-shadow: ${props => props.theme.shadows.rosa20};
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: ${props => props.theme.colors.rosaPardo};
-    color: ${props => props.theme.colors.white};
-    box-shadow: ${props => props.theme.shadows.rosa50};
+    background-color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.rosaPardo};
+    box-shadow: ${props => props.theme.shadows.black30};
     transform: translateY(-2px);
   }
 
