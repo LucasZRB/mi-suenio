@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faClock, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faClock, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function Footer() {
   // Reemplazar con los datos reales (Formato sin espacios ni símbolos)
@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <FooterContainer id="contacto">
       <FooterSection>
-        <h5>NUESTRO LOCAL</h5>
+        <h5>Mi Sueño</h5>
         {/* Enlace dinámico a Google Maps */}
         <ContactLink 
           href={`https://google.com/maps/place/${googleMapsAddress}`} 
@@ -31,13 +31,32 @@ export default function Footer() {
       </FooterSection>
 
       <FooterSection>
+        <h5>¡SEGUINOS!</h5>
+        <p><FontAwesomeIcon icon={faClock} /></p>
+        <p><FontAwesomeIcon icon={faClock} /></p>
+        <p><FontAwesomeIcon icon={faClock} /></p>
+      </FooterSection>
+
+      <FooterSection>
+        <h5>SERVICIO AL CLIENTE</h5>
+        <p>Preguntas frecuentes</p>
+        <p>Políticas de cambio</p>
+        {/* ¿No es redundante este? */}
+        <p>Promociones</p>
+      </FooterSection>
+
+      <FooterSection>
+        <h5>CONTACTOS</h5>
+        <p><FontAwesomeIcon icon={faEnvelope} /> sonia_noemi@live.com.ar</p>
+      </FooterSection>
+
+      <FooterSection>
         <h5>HORARIOS</h5>
-        <p><FontAwesomeIcon icon={faClock} /> Lun a Vie: 08:00 a 20:00</p>
-        <p><FontAwesomeIcon icon={faClock} /> Sábados: 09:00 a 14:00</p>
+        <p><FontAwesomeIcon icon={faClock} /> Lun a Sáb: 09:30 a 13hs y 16hs a 20hs</p>
       </FooterSection>
 
       <FooterBottom>
-        <p>&copy; 2026 Nuestra Tienda Física. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Mi Sueño. Todos los derechos reservados.</p>
       </FooterBottom>
     </FooterContainer>
   );
@@ -47,7 +66,7 @@ export default function Footer() {
 const FooterContainer = styled.footer`
   background-color: ${props => props.theme.colors.marronOscuro};
   color: ${props => props.theme.colors.white};
-  padding: 40px 20px 20px 20px;
+  padding: 64px 64px 32px 64px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
