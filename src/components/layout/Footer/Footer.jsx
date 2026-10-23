@@ -5,9 +5,9 @@ import { faMapMarkerAlt, faPhone, faEnvelope, faClock } from '@fortawesome/free-
 
 const Footer = () => {
   // Reemplazar con los datos reales (Formato sin espacios ni símbolos)
-  const googleMapsAddress = encodeURIComponent("Calle Falsa 123, Bahía Blanca, Buenos Aires");
-  const whatsappNumber = "541112345678"; // Código país + código área + número sin el 15
-  const emailAddress = "ejemplo@gmail.com";
+  const googleMapsAddress = encodeURIComponent("Sixto Laspiur 2251, Bahia Blanca, Buenos Aires");
+  const whatsappNumber = "542915221742"; // Código país + código área + número sin el 15
+  const emailAddress = "sonia_noemi@live.com.ar";
 
   return (
     <FooterContainer>
@@ -54,7 +54,7 @@ const Footer = () => {
               href={`https://google.com/maps/place/${googleMapsAddress}`}
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="icon-fixed" />
-              <span>Calle Falsa 123, Argentina</span>
+              <span>Sixto Laspiur 2251, Bahia Blanca</span>
             </ContactLink>
           </ContactItem>
           <ContactItem>
@@ -70,7 +70,7 @@ const Footer = () => {
               href={`mailto:${emailAddress}`}
             >
               <FontAwesomeIcon icon={faEnvelope} className="icon-fixed" />
-              <span>Envíanos un correo a {emailAddress}</span>
+              <span>Envíanos un correo a: {emailAddress}</span>
             </ContactLink>
           </ContactItem>
           <ContactItem>
