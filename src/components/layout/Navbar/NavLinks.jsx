@@ -1,5 +1,7 @@
 import { useLocation } from 'wouter';
-import { NavLinksContainer, StyledLink, CtaButton } from './Navbar.styles';
+import { NavLinksContainer } from './Navbar.styles';
+import { CustomLink } from '../../common/CustomLink';
+import { Button } from '../../common/Button';
 
 const navItems = [
   { name: 'Inicio', path: '/' },
@@ -10,24 +12,22 @@ export const NavLinks = ({ closeMenu }) => {
   const [location] = useLocation();
 
   return (
-    <>
-      <NavLinksContainer>
-        {navItems.map((item, index) => (
-          <StyledLink 
-            key={index} 
-            href={item.path} 
-            $isActive={location === item.path} 
-            onClick={closeMenu}
-          >
-            {item.name}
-          </StyledLink>
-        ))}
-      </NavLinksContainer>
+    <NavLinksContainer>
+      {navItems.map((item, index) => (
+        <CustomLink 
+          key={index} 
+          href={item.path} 
+          $isActive={location === item.path} 
+          onClick={closeMenu}
+        >
+          {item.name}
+        </CustomLink>
+      ))}
 
-      {/* CTA Llamativo final */}
-      <CtaButton href="/#contacto" onClick={closeMenu}>
-        Promociones
-      </CtaButton>
-    </>
+    {/* CTA Llamativo final */}
+    <Button href="/#contacto" onClick={closeMenu}>
+      Promociones
+    </Button>
+    </NavLinksContainer>
   );
 };

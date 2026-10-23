@@ -38,13 +38,6 @@ export const BrandColumn = styled.div`
   flex-direction: column;
 `;
 
-export const BrandTitle = styled.h3`
-  font-family: ${({ theme }) => theme.fonts.title};
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  font-weight: 400;
-  margin-bottom: 4px;
-`;
-
 export const BrandSubtitle = styled.p`
   font-family: ${({ theme }) => theme.fonts.body};
   font-style: italic;

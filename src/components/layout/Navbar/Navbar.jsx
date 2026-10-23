@@ -4,7 +4,6 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { NavContainer, Hamburger, Backdrop, NavMenu } from './Navbar.styles';
 import { Logo } from '../../common/Logo';
 import { NavLinks } from './NavLinks';
-import { css } from 'styled-components';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,12 +38,7 @@ export default function Navbar() {
 
   return (
     <NavContainer>
-      <Logo
-        $customStyles={css`
-          color: ${props => props.theme.colors.marronOscuro};
-          cursor: pointer;
-        `}
-      />
+      <Logo $sendHome />
       
       {/* Botón Hamburguesa */}
       <Hamburger ref={hamburgerRef} onClick={toggleMenu} aria-label="Abrir menú">
