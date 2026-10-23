@@ -28,8 +28,22 @@ export const LogoWrapper = styled.div`
   /* font-size: ${props => props.theme.fontSizes.lg};
   font-weight: bold; */
   font-size: ${props => props.theme.fontSizes.xl};
+  /* Sección para inyectar bloques de CSS adicionales directamente
+  y detectar cuando es una fución (útil para cuando necesitamos inyectar props)
+  Creeme, es útil a futuro xd */
+  ${(props) => typeof props.$customStyles === 'function' 
+    ? props.$customStyles(props) 
+    : props.$customStyles}
+`;
+
+export const LogoLink = styled(Link)`
   color: ${props => props.theme.colors.marronOscuro};
-  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${props => props.theme.colors.rosaPardo};
+  }
 `;
 
 export const Hamburger = styled.button`
@@ -107,6 +121,20 @@ export const StyledLink = styled(Link)`
   &:hover {
     color: ${props => props.theme.colors.oro};
   }
+
+  /* Si se usa en modo link plano dentro de mobile para el CTA */
+  ${props => props.$isMobilePlain && `
+    font-size: ${props.theme.fontSizes.sm};
+    color: ${props.theme.colors.marronOscuro};
+    font-weight: normal;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    &:hover {
+      color: ${props.theme.colors.oro};
+      transform: none;
+    }
+  `}
 `;
 
 export const CtaButton = styled.a`
@@ -133,5 +161,25 @@ export const CtaButton = styled.a`
   ${props => props.theme.breakpoints.tablet} {
     width: 100%;
     text-align: center;
+  }
+
+  /* Comportamiento específico en Mobile: pasa a ser un link plano acorde al resto */
+  ${props => props.theme.breakpoints.mobile} {
+    background-color: transparent;
+    color: ${props => props.theme.colors.marronOscuro};
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: ${props => props.theme.fontSizes.sm};
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+
+    &:hover {
+      background-color: transparent;
+      color: ${props => props.theme.colors.oro};
+      box-shadow: none;
+      transform: none;
+    }
   }
 `;
