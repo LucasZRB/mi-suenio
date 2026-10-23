@@ -4,6 +4,11 @@ export const theme = {
     rosaPardo: '#D4788E',
     oro: '#C9A96E',
     marronOscuro: '#3D2420',
+    // Variaciones y transparencias útiles para estados de interacción
+    rosaPardoHover: '#c2657a',
+    marronClaro: '#5a3b37',
+    transparenciaMarron: 'rgba(61, 36, 32, 0.08)',
+    transparenciaRosa: 'rgba(212, 120, 142, 0.15)',
   },
   fonts: {
     title: "'Cormorant Garamond', serif",
@@ -15,6 +20,7 @@ export const theme = {
     h1: '72px',   display: '80px', hero: '84px'
   },
   shadows: {
+    white30: '0 4px 12px rgba(253, 248, 245, 0.30)',
     black30: '0 4px 12px rgba(0, 0, 0, 0.30)',
     black20: '0 4px 4px rgba(0, 0, 0, 0.20)',
     oro20: '0 4px 12px rgba(201, 169, 110, 0.20)',
@@ -24,7 +30,7 @@ export const theme = {
   },
   // Media query para adaptar fácilmente de dispositivos
   breakpoints: {
-    mobile: '@media (max-width: 576px)',
+    mobile: '@media (max-width: 600px)',
     tablet: '@media (max-width: 992px)' // Aplica a tablets y celulares
   }
 };
