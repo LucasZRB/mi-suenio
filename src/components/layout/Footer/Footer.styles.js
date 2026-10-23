@@ -158,12 +158,12 @@ export const ContactItem = styled.div`
   }
 `;
 
-export const ContactLink = styled.a.attrs((props) => ({
-  href: props.href || "#",
-  target: "_blank",
-  rel: "noopener noreferrer",
+export const ContactLink = styled.a.attrs(({ href, $isExternal }) => ({
+  href: href || "#",
+  target: $isExternal ? "_blank" : "_self",
+  rel: $isExternal ? "noopener noreferrer" : undefined,
 }))`
-  color: ${props => props.theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   display: flex;
@@ -172,7 +172,7 @@ export const ContactLink = styled.a.attrs((props) => ({
   width: 100%;
 
   &:hover {
-    color: ${props => props.theme.colors.oro};
+    color: ${({ theme }) => theme.colors.oro};
     svg { transform: scale(1.15); }
   }
 `;

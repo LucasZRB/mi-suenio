@@ -40,7 +40,7 @@ export const FooterContact = () => {
       {contactItems.map((item, index) => (
         <ContactItem key={index}>
           {item.href ? (
-            <ContactLink href={item.href}>
+            <ContactLink href={item.href} isExternal={item.isExternal}>
               <FontAwesomeIcon icon={item.icon} className="icon-fixed" />
               <span>{item.text}</span>
             </ContactLink>
