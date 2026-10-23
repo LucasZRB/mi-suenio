@@ -1,10 +1,10 @@
 import { Route, Switch } from 'wouter';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from './theme';
-import Navbar from './components/Navbar';
+import Navbar from './components/layout/Navbar/Navbar';
 import Home from './pages/Home';
 import Products from './pages/Products';
-import Footer from './components/Footer';
+import Footer from './components/layout/Footer/Footer';
 
 // Estilos globales básicos para resetear el navegador
 const GlobalStyle = createGlobalStyle`
