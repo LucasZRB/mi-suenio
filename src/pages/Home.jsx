@@ -1,16 +1,10 @@
-import { theme } from '../theme';
+import { HeroSection } from '../components/sections/Home/HeroSection';
 
-export default function Footer() {
+export default function Home() {
   return (
-    <div
-      style={{
-        padding: "40px 20px",
-        fontFamily: theme.fonts.title,
-        fontSize: theme.fontSizes.h2,
-        color: theme.colors.marronOscuro,
-      }}
-    >
-      Presentación del Negocio
-    </div>
+    <main>
+      <HeroSection />
+      {/* Próximamente: Ticker bar y siguientes secciones */}
+    </main>
   );
 }
