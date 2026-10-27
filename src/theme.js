@@ -12,6 +12,7 @@ export const theme = {
     marronClaro: '#5a3b37',
     transparenciaMarron: 'rgba(61, 36, 32, 0.08)',
     transparenciaRosa: 'rgba(212, 120, 142, 0.15)',
+    transparenciaOro: 'rgba(201, 169, 110, 0.20)',
   },
   fonts: {
     title: "'Cormorant Garamond', serif",

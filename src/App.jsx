@@ -29,7 +29,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Navbar /> {/* Se mantiene fijo en toda la app */}
+      <Navbar />
 
       <Switch>
         <Route path="/" component={Home} />
