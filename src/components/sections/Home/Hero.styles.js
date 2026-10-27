@@ -107,7 +107,7 @@ export const HeroImageContainer = styled.div`
   height: 100%;
   min-height: 400px;
   background-color: ${({ theme }) => theme.colors.transparenciaMarron};
-  background-image: linear-gradient(45deg, #f4f4f4 25%, transparent 25%), linear-gradient(-45deg, #f4f4f4 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f4f4f4 75%), linear-gradient(-45deg, transparent 75%, #f4f4f4 75%);
+  background-image: ${({ theme }) => theme.placeholder.imageError};
   position: relative;
   overflow: hidden;
   box-shadow: ${({ theme }) => theme.shadows.oro20};

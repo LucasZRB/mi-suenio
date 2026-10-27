@@ -1,3 +1,6 @@
+// TODO: Podemos mejorar mucho mejor los colores
+// si los separamos y luego los consumimos
+// antes de exportarlo
 export const theme = {
   colors: {
     white: '#FDF8F5',
@@ -28,6 +31,10 @@ export const theme = {
     rosa20: '0 4px 12px rgba(212, 120, 142, 0.20)',
     rosa20b: '0 4px 4px rgba(212, 120, 142, 0.20)',
     rosa50: '0 4px 12px rgba(212, 120, 142, 0.50)'
+  },
+  placeholder: {
+    imageNull: `linear-gradient(45deg, #fdfdfd 25%, transparent 25%)`,
+    imageError: 'linear-gradient(45deg, #f4f4f4 25%, transparent 25%), linear-gradient(-45deg, #f4f4f4 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f4f4f4 75%), linear-gradient(-45deg, transparent 75%, #f4f4f4 75%)',
   },
   // Media query para adaptar fácilmente de dispositivos
   breakpoints: {

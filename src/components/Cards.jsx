@@ -1,16 +1,33 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
+import { theme } from '../theme';
+import { CardContainer as CatCardContainer, CardDescription, CardImageWrapper, CardTitle } from './sections/Home/CategoryCard.styles';
 
 // 1. CARD DE CATEGORÍA
-export function CategoryCard({ name, image, description }) {
+export function CategoryCard({ category }) {
+  const { name, image, alt, description } = category;
+
   return (
     <CatCardContainer>
-      <h3>{name}</h3>
-      <ImageWrapper>
-        <img src={image} alt={name} />
-      </ImageWrapper>
-      <p>{description}</p>
+      <CardTitle>{name}</CardTitle>
+      <CardImageWrapper>
+        {image ? (
+          <img
+            src={image}
+            alt={alt || name}
+            loading="lazy" 
+            aria-hidden
+            onError={(e) => {
+              e.target.parentElement.style.backgroundImage = theme.placeholder.imageError;
+            }}
+          />
+        ) : (
+          // Placeholder visual por si la imagen es null/vacía en esta etapa
+          <div style={{ width: '100%', height: '100%', background: theme.placeholder.imageNull, backgroundColor: theme.colors.transparenciaMarron }} />
+        )}
+      </CardImageWrapper>
+      <CardDescription>{description}</CardDescription>
     </CatCardContainer>
   );
 }
@@ -51,43 +68,6 @@ export function CouponCard({ icon, title, subtitle, description }) {
 }
 
 // --- ESTILOS COMPARTIDOS Y ESPECÍFICOS ---
-
-const CatCardContainer = styled.div`
-  background: none;
-  text-align: center;
-  max-width: 320px;
-  
-  h3 {
-    font-family: ${props => props.theme.fonts.title};
-    font-size: ${props => props.theme.fontSizes.lg};
-    color: ${props => props.theme.colors.marronOscuro};
-    margin-bottom: 15px;
-  }
-  p {
-    font-family: ${props => props.theme.fonts.body};
-    font-size: ${props => props.theme.fontSizes.sm};
-    margin-top: 10px;
-  }
-`;
-
-const ImageWrapper = styled.div`
-  width: 100%;
-  height: 250px;
-  border-radius: 16px; /* Bordes redondeados solicitados */
-  overflow: hidden;
-  box-shadow: ${props => props.theme.shadows.black30};
-  transition: transform 0.3s ease-in-out;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &:hover {
-    transform: scale(1.05); /* Efecto hover de agrandado */
-  }
-`;
 
 const ProdCardContainer = styled.div`
   background: ${props => props.theme.colors.white};
