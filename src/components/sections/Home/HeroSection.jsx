@@ -36,6 +36,7 @@ export const HeroSection = () => {
             src="/assets/images/hero-model.jpg" 
             alt="Moda y delicadeza - Mi Sueño" 
             loading="lazy" 
+            aria-hidden
             onError={(e) => {
               // Si falla la carga, ocultamos la imagen y evitamos que rompa el layout
               e.target.style.display = 'none';
