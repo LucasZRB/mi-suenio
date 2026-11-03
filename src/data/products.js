@@ -1,40 +1,51 @@
-// export const PRODUCTS_DATA = [
-//   {
-//     id: 1,
-//     name: "Café de Especialidad - Colombia",
-//     price: 4500,
-//     onSale: true,
-//     salePrice: 3900,
-//     image: "/images/cafe-colombia.jpg",
-//     description: "Notas dulces y cítricas, ideal para arrancar el día.",
-//   },
-//   {
-//     id: 2,
-//     name: "Taza Cerámica Artesanal",
-//     price: 2800,
-//     onSale: false,
-//     image: "/images/taza.jpg",
-//     description: "Hechas a mano por artistas locales.",
-//   },
-// ];
-
 export const PRODUCTS_DATA = [
   {
     id: 1,
-    type: "Especialidad",
-    name: "Café Bourbon Rojo",
-    price: 4500,
-    image: "/images/cafe-especialidad.jpg",
-    alt: '',
-    description: "Origen Colombia, notas a caramelo y chocolate.",
+    category: "Invierno",
+    size: "M",
+    name: "Campera de Lana Rústica",
+    price: 45000,
+    onSale: true,
+    salePrice: 36000,
+    image: null, // Acá pon las url de las imágenes que vayas agregando
+    // Cada cual en un item aparte y entre comillas (''), ¿Si?
+    alt: "Campera de lana rústica color beige",
+    description: "Ideal for days with low temperatures, soft and warm."
   },
   {
     id: 2,
-    type: "Clásico",
-    name: "Croissant de Almendras",
-    price: 1800,
-    image: "/images/clasico.jpg",
-    alt: '',
-    description: "Hojaldre francés relleno de crema de almendras.",
+    category: "Otoño",
+    size: "S",
+    name: "Cardigan Tejido",
+    price: 32000,
+    onSale: false,
+    salePrice: null,
+    image: null,
+    alt: "Cardigan tejido abierto",
+    description: "Perfecto para combinar en los días frescos de otoño."
+  },
+  {
+    id: 3,
+    category: "Invierno",
+    size: "L",
+    name: "Campera de Lana Rústica",
+    price: 45000,
+    onSale: true,
+    salePrice: 36000,
+    image: null,
+    alt: "Campera de lana rústica color beige",
+    description: "Ideal for days with low temperatures, soft and warm."
+  },
+  {
+    id: 4,
+    category: "Otoño",
+    size: "XL",
+    name: "Cardigan Tejido",
+    price: 32000,
+    onSale: false,
+    salePrice: null,
+    image: null,
+    alt: "Cardigan tejido abierto",
+    description: "Perfecto para combinar en los días frescos de otoño."
   },
 ];

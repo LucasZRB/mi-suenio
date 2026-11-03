@@ -10,6 +10,15 @@ const scrollAnimation = keyframes`
   }
 `;
 
+export const TickerTrack = styled.div`
+  display: flex;
+  width: max-content;
+  align-items: center;
+  /* Si ves que es muy lento, ponle más segundos para
+  acelerarlo un poco :P */
+  animation: ${scrollAnimation} 30s linear infinite;
+`;
+
 export const TickerContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.rosaPardo};
   color: ${({ theme }) => theme.colors.white};
@@ -47,17 +56,16 @@ export const TickerContainer = styled.div`
       display: flex;
     }
   }
-`;
 
-export const TickerTrack = styled.div`
-  display: flex;
-  width: max-content;
-  align-items: center;
-  /* Si ves que es muy lento, ponle más segundos para
-  acelerarlo un poco :P */
-  animation: ${scrollAnimation} 30s linear infinite;
-
-  &:hover {
+  /* Al hacer hover en el contenedor principal, se detiene
+  la animación del hijo que está dentro de este componente */
+  /* Sino era un poco molesto que únicamente se pausara
+  cuando seleccionabas el texto en específico en vez del
+  componente en general. Con esto se solucionaría eso */
+  /* Y si te lo pregunstas, sí, era completamente necesario
+  invertir el orden de los componentes para que funcionara.
+  Con cómo los veníamos trabajando (de lectura) acá no se puede */
+  &:hover ${TickerTrack} {
     animation-play-state: paused; /* Pausa opcional al poner el mouse/dedo encima */
   }
 `;

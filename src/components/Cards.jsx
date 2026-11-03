@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as Icons from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import * as Icons from '@fortawesome/free-solid-svg-icons';
 import { theme } from '../theme';
 import { CardContainer as CatCardContainer, CardDescription, CardImageWrapper, CardTitle } from './sections/Home/CategoryCard.styles';
 
@@ -56,12 +56,12 @@ export function ProductCard({ type, name, price, description }) {
 // 3. CARD DE DESCUENTOS / CUPONES
 export function CouponCard({ icon, title, subtitle, description }) {
   // Buscamos dinámicamente el ícono de la librería instalada
-  const faIcon = Icons[`fa${icon.charAt(0).toUpperCase() + icon.slice(1)}`] || Icons.faTicket;
+  // const faIcon = Icons[`fa${icon.charAt(0).toUpperCase() + icon.slice(1)}`] || Icons.faTicket;
 
   return (
     <CouponContainer>
       <IconSection>
-        <FontAwesomeIcon icon={faIcon} />
+        {/* <FontAwesomeIcon icon={faIcon} /> */}
       </IconSection>
       <TextSection>
         <h5>{title}</h5>
