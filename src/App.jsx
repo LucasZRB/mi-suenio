@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar/Navbar';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Footer from './components/layout/Footer/Footer';
+import { FloatingActions } from './components/layout/FloatingActions/FloatingActions';
 
 // Estilos globales básicos para resetear el navegador
 const GlobalStyle = createGlobalStyle`
@@ -40,6 +41,7 @@ export default function App() {
         <Route>404 - Página no encontrada</Route>
       </Switch>
 
+      <FloatingActions />
       <Footer />
     </ThemeProvider>
   );
