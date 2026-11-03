@@ -11,8 +11,8 @@ export const COUPONS_DATA = [
   {
     id: 2,
     icon: faGift,
-    title: "2x1",
-    subtitle: "Jueves de Amigos",
-    description: "En todos nuestros cafés medianos de 16 a 19 hs.",
+    title: "Cuotas sin interes",
+    subtitle: "con cualquier tarjeta",
+    description: "{excepciones: coopeplus, visa, cabal}",
   },
 ];

@@ -7,6 +7,11 @@ import { CardContainer as CatCardContainer, CardDescription, CardImageWrapper, C
 // 1. CARD DE CATEGORÍA
 export function CategoryCard({ category }) {
   const { name, image, alt, description } = category;
+  // 1. Validamos si existe el nombre antes de generar la URL
+  // Si no existe, dejamos la variable como null para evitar errores en Vite
+  const imageUrl = image 
+    ? new URL(`../assets/images/${image}`, import.meta.url).href 
+    : null;
 
   return (
     <CatCardContainer>
@@ -14,7 +19,7 @@ export function CategoryCard({ category }) {
       <CardImageWrapper>
         {image ? (
           <img
-            src={image}
+            src={imageUrl}
             alt={alt || name}
             loading="lazy" 
             aria-hidden
