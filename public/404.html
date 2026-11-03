@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirigiendo...</title>
+    <script type="text/javascript">
+      // Redirige todas las rutas a index.html conservando la ruta y los query params para Wouter
+      var pathSegmentsToKeep = 1; // Cambia esto a 0 si usas un dominio personalizado (ej: tudominio.com)
+      var l = window.location;
+      var repoPath = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
+      var restOfPath = l.pathname.split('/').slice(1 + pathSegmentsToKeep).join('/');
+      
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        repoPath + '/?/' + restOfPath + (l.search ? '&' + l.search.slice(1) : '') + l.hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

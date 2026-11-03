@@ -1,4 +1,4 @@
-import { Route, Switch } from 'wouter';
+import { Route, Router, Switch } from 'wouter';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import Navbar from './components/layout/Navbar/Navbar';
@@ -30,19 +30,23 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function App() {
+  const basename = import.meta.env.BASE_URL;
+
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Navbar />
+      <Router base={basename}>
+        <GlobalStyle />
+        <Navbar />
 
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/productos" component={Products} />
-        <Route>404 - Página no encontrada</Route>
-      </Switch>
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/productos" component={Products} />
+          <Route>404 - Página no encontrada</Route>
+        </Switch>
 
-      <FloatingActions />
-      <Footer />
+        <FloatingActions />
+        <Footer />
+      </Router>
     </ThemeProvider>
   );
 }
