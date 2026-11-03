@@ -1,3 +1,4 @@
+import { useLocation } from 'wouter';
 import styled from 'styled-components';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import * as Icons from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +7,8 @@ import { CardContainer as CatCardContainer, CardDescription, CardImageWrapper, C
 
 // 1. CARD DE CATEGORÍA
 export function CategoryCard({ category }) {
+  const [, setLocation] = useLocation();
+
   const { name, image, alt, description } = category;
   // 1. Validamos si existe el nombre antes de generar la URL
   // Si no existe, dejamos la variable como null para evitar errores en Vite
@@ -13,10 +16,18 @@ export function CategoryCard({ category }) {
     ? new URL(`../assets/images/${image}`, import.meta.url).href 
     : null;
 
+  const handleClick = () => {
+    // 1. Transformamos a minúsculas y limpiamos espacios si es necesario
+    const categorySlug = name.toLowerCase().trim();
+    
+    // 2. Navegamos a la ruta con el query param
+    setLocation(`/productos?categoria=${categorySlug}`);
+  };
+
   return (
     <CatCardContainer>
       <CardTitle>{name}</CardTitle>
-      <CardImageWrapper>
+      <CardImageWrapper onClick={handleClick}>
         {image ? (
           <img
             src={imageUrl}

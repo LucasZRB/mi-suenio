@@ -6,7 +6,7 @@ const serviceLinks = [
   // O cambiar/quitar los enlaces
   { name: 'Preguntas Frecuentes', url: '#' },
   { name: 'Políticas de cambio', url: '#' },
-  { name: 'Promociones', url: '#' },
+  { name: 'Promociones', url: '/#promociones' },
 ];
 
 export const FooterLinks = () => {

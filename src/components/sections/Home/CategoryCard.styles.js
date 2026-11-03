@@ -23,6 +23,7 @@ export const CardImageWrapper = styled.div`
   width: 256px;
   height: 368px;
   border-radius: 50px;
+  cursor: pointer;
   overflow: hidden;
   box-shadow: ${props => props.theme.shadows.black30};
   transition: transform 0.3s ease-in-out;

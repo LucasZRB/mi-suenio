@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+import { useSearch } from 'wouter';
 import { ProductCard } from './ProductCard';
 import { PRODUCTS_DATA } from '../../../data/products';
 import { 
@@ -11,13 +13,22 @@ import {
   DividingLine
 } from './CatalogSection.styles';
 
-export const CatalogSection = ({ selectedCategory }) => {
+export const CatalogSection = () => {
+  // Obtenemos los query params (ej: "?categoria=verano")
+  const searchString = useSearch();
+
+  // Parseamos la URL para extraer el valor del parámetro 'categoria'
+  const searchParams = new URLSearchParams(searchString);
+  const selectedCategory = searchParams.get('categoria'); // ej: "verano"
+
   // Lógica de filtrado: Si hay categoría seleccionada, filtramos; sino, devolvemos todo
-  const filteredProducts = selectedCategory
-    ? PRODUCTS_DATA.filter(
-        (product) => product.category.toLowerCase() === selectedCategory.toLowerCase()
-      )
-    : PRODUCTS_DATA;
+  const filteredProducts = useMemo(() => {
+    if (!selectedCategory) return PRODUCTS_DATA;
+    
+    return PRODUCTS_DATA.filter(
+      (product) => product.category.toLowerCase() === selectedCategory.toLowerCase()
+    );
+  }, [selectedCategory]);
 
   return (
     <CatalogContainer>

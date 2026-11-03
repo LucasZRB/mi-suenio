@@ -25,7 +25,7 @@ export const NavLinks = ({ closeMenu }) => {
       ))}
 
     {/* CTA Llamativo final */}
-    <Button href="/#contacto" isNav onClick={closeMenu}>
+    <Button href="#promociones" isNav onClick={closeMenu}>
       Promociones
     </Button>
     </NavLinksContainer>
