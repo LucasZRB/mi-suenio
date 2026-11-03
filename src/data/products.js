@@ -2,6 +2,7 @@ export const PRODUCTS_DATA = [
   {
     id: 1,
     category: "Invierno",
+    type: "Blusas y Camisas",
     size: "M",
     name: "Campera de Lana Rústica",
     price: 45000,
@@ -15,6 +16,7 @@ export const PRODUCTS_DATA = [
   {
     id: 2,
     category: "Otoño",
+    type: "Pantalones",
     size: "S",
     name: "Cardigan Tejido",
     price: 32000,
@@ -27,6 +29,7 @@ export const PRODUCTS_DATA = [
   {
     id: 3,
     category: "Invierno",
+    type: "Camperas",
     size: "L",
     name: "Campera de Lana Rústica",
     price: 45000,
@@ -39,6 +42,7 @@ export const PRODUCTS_DATA = [
   {
     id: 4,
     category: "Otoño",
+    type: "Fiestas",
     size: "XL",
     name: "Cardigan Tejido",
     price: 32000,
