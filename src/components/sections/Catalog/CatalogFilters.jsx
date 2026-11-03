@@ -33,11 +33,11 @@ export const CatalogFilters = ({ categories = [], types = [], sizes = [] }) => {
   // Función para actualizar los query params dinámicamente sin perder los demás
   const updateParam = (key, value) => {
     const params = new URLSearchParams(searchString);
-    if (value) {
-      params.set(key, value);
-    } else {
-      params.delete(key);
-    }
+    if (value) params.set(key, value);
+    else params.delete(key);
+
+    // Al cambiar filtros, es recomendable volver a la página 1 para evitar desajustes
+    params.delete('pagina');
     setLocation(`${location.split('?')[0]}?${params.toString()}`);
   };
 
@@ -46,6 +46,37 @@ export const CatalogFilters = ({ categories = [], types = [], sizes = [] }) => {
   };
 
   const hasActiveFilters = search || category || type || size || onSale || minPrice || maxPrice;
+
+  // Función auxiliar para formatear número con puntos (ej: 1500 -> 1.500)
+const formatPriceInput = (value) => {
+  if (!value) return '';
+  const numbers = value.toString().replace(/\D/g, '');
+  return Number(numbers).toLocaleString('es-AR');
+};
+
+const handlePriceChange = (field, rawValue) => {
+  const numbersOnly = rawValue.replace(/\D/g, '');
+  let newMin = minPrice;
+  let newMax = maxPrice;
+
+  if (field === 'min') newMin = numbersOnly;
+  if (field === 'max') newMax = numbersOnly;
+
+  // Validación automática: si el mínimo es mayor que el máximo, los intercambiamos o ajustamos
+  if (newMin && newMax && Number(newMin) > Number(newMax)) {
+    if (field === 'min') [newMax, newMin] = [newMin, newMax];
+    else [newMin, newMax] = [newMax, newMin];
+  }
+
+  const params = new URLSearchParams(searchString);
+  if (newMin) params.set('minPrice', newMin); else params.delete('minPrice');
+  if (newMax) params.set('maxPrice', newMax); else params.delete('maxPrice');
+  
+  // Al cambiar filtros, es recomendable volver a la página 1 para evitar desajustes
+  params.delete('pagina');
+
+  setLocation(`${location.split('?')[0]}?${params.toString()}`);
+};
 
   return (
     <FiltersContainer>
@@ -117,10 +148,10 @@ export const CatalogFilters = ({ categories = [], types = [], sizes = [] }) => {
           <FilterGroup>
             <label>Precio Mínimo ($)</label>
             <input
-              type="number"
+              type="text"
               placeholder="Ej: 10.000"
-              value={minPrice}
-              onChange={(e) => updateParam('minPrice', e.target.value)}
+              value={formatPriceInput(minPrice)}
+              onChange={(e) => handlePriceChange('min', e.target.value)}
               style={{
                 padding: '10px',
                 fontFamily: 'inherit',
@@ -136,10 +167,10 @@ export const CatalogFilters = ({ categories = [], types = [], sizes = [] }) => {
           <FilterGroup>
             <label>Precio Máximo ($)</label>
             <input
-              type="number"
+              type="text"
               placeholder="Ej: 200.000"
-              value={maxPrice}
-              onChange={(e) => updateParam('maxPrice', e.target.value)}
+              value={formatPriceInput(maxPrice)}
+              onChange={(e) => handlePriceChange('max', e.target.value)}
               style={{
                 padding: '10px',
                 fontFamily: 'inherit',

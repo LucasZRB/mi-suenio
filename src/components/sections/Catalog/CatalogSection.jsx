@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useSearch } from 'wouter';
+import { useLocation, useSearch } from 'wouter';
 import { ProductCard } from './ProductCard';
 import { PRODUCTS_DATA } from '../../../data/products';
 import { CatalogFilters } from './CatalogFilters';
@@ -13,10 +13,17 @@ import {
   SectionDescription,
   DividingLine
 } from './CatalogSection.styles';
+import { Pagination } from './Pagination';
+
+// Define cuántos productos queries
+// ver por página como máximo
+const PRODUCTS_PER_PAGE = 8;
 
 export const CatalogSection = () => {
   // Obtenemos los query params (ej: "?categoria=verano")
   const searchString = useSearch();
+  // Esto es para la paginación
+  const [location, setLocation] = useLocation();
   // Parseamos la URL para extraer el valor del parámetro 'categoria'
   const searchParams = new URLSearchParams(searchString);
 
@@ -28,6 +35,9 @@ export const CatalogSection = () => {
   const onlyOnSale = searchParams.get('oferta') === 'true';
   const minPrice = searchParams.get('minPrice') || '';
   const maxPrice = searchParams.get('maxPrice') || '';
+  
+  // Página actual desde la URL (por defecto 1)
+  const urlPage = parseInt(searchParams.get('pagina'), 10) || 1;
 
   // Se extraen opciones únicas (set) dinámicamente para los selects de los filtros
   const categoriesList = useMemo(() => [...new Set(PRODUCTS_DATA.map(p => p.category))], []);
@@ -74,6 +84,30 @@ export const CatalogSection = () => {
       return true;
     });
   }, [searchQuery, selectedCategory, selectedType, selectedSize, onlyOnSale, minPrice, maxPrice]);
+  
+    // Cálculo de Paginación y Seguridad de URL
+    const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE) || 1;
+  
+    // Si la página en la URL es mayor al total de páginas reales (por cambio manual o filtrado menor), reseteamos a 1
+    const currentPage = urlPage > totalPages ? 1 : urlPage;
+  
+    // Cambiar de página actualizando la URL
+    const handlePageChange = (newPage) => {
+      const params = new URLSearchParams(searchString);
+      if (newPage === 1) {
+        params.delete('pagina');
+      } else {
+        params.set('pagina', newPage);
+      }
+      setLocation(`${location.split('?')[0]}?${params.toString()}`);
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Sube arriba suavemente al cambiar de página
+    };
+  
+    // Obtener solo los productos de la página actual
+    const paginatedProducts = useMemo(() => {
+      const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+      return filteredProducts.slice(start, start + PRODUCTS_PER_PAGE);
+    }, [filteredProducts, currentPage]);
 
   return (
     <CatalogContainer>
@@ -97,8 +131,8 @@ export const CatalogSection = () => {
       />
 
       <ProductsGrid>
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
+        {paginatedProducts.length > 0 ? (
+          paginatedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))
         ) : (
@@ -107,6 +141,12 @@ export const CatalogSection = () => {
           </EmptyMessage>
         )}
       </ProductsGrid>
+
+      <Pagination 
+        currentPage={currentPage} 
+        totalPages={totalPages} 
+        onPageChange={handlePageChange} 
+      />
     </CatalogContainer>
   );
 };
