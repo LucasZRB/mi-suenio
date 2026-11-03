@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <NavContainer>
       <Logo $sendHome />
-      
+
       {/* Botón Hamburguesa */}
       <Hamburger ref={hamburgerRef} onClick={toggleMenu} aria-label="Abrir menú">
         <FontAwesomeIcon icon={isOpen ? faXmark : faBars} />

@@ -8,7 +8,8 @@ export const NavContainer = styled.nav`
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.rosa20b};
   border-bottom: 1px solid ${({ theme }) => theme.colors.rosaPardo};
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 100;
 
   ${({ theme }) => theme.breakpoints.tablet} {

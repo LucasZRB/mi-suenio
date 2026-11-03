@@ -19,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.marronOscuro};
     -webkit-font-smoothing: antialiased;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   a {
     text-decoration: none;
     color: inherit;

@@ -4,9 +4,14 @@ export const PromotionsContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.transparenciaOro};
   padding: 64px 5%;
   text-align: center;
+  scroll-margin-top: 84px;
 
   ${({ theme }) => theme.breakpoints.tablet} {
     padding-block: 32px;
+  }
+
+  ${({ theme }) => theme.breakpoints.mobile} {
+    scroll-margin-top: 77px;
   }
 `;
 

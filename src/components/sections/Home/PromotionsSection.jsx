@@ -12,7 +12,7 @@ import {
 
 export const PromotionsSection = ({ bannerInfo }) => {
   return (
-    <PromotionsContainer>
+    <PromotionsContainer id="contacto">
       <PromoMiniTitle>Exclusivo para vos</PromoMiniTitle>
       <PromoMainHeading>
         Promociones <span>especiales</span>
