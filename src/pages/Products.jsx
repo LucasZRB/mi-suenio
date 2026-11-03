@@ -1,15 +1,11 @@
-import { theme } from "../theme";
+import { TickerBar } from "../components/common/TickerBar/TickerBar";
+import { CatalogSection } from "../components/sections/Catalog/CatalogSection";
 
-export default function Footer() {
+export default function Products() {
   return (
-    <div
-      style={{
-        padding: "40px 20px",
-        fontFamily: theme.fonts.body,
-        fontSize: theme.fontSizes.lg,
-      }}
-    >
-      Catálogo de Productos
-    </div>
+    <main>
+      <CatalogSection />
+      <TickerBar />
+    </main>
   );
 }

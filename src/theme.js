@@ -10,6 +10,7 @@ export const theme = {
     // Variaciones y transparencias útiles para estados de interacción
     rosaPardoHover: '#c2657a',
     marronClaro: '#5a3b37',
+    transparenciaBlanca: 'rgba(255, 255, 255, 0.9)',
     transparenciaMarron: 'rgba(61, 36, 32, 0.08)',
     transparenciaRosa: 'rgba(212, 120, 142, 0.15)',
     transparenciaOro: 'rgba(201, 169, 110, 0.20)',
