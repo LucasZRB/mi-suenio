@@ -14,6 +14,9 @@ import { theme } from '../../../theme';
 
 export const ProductCard = ({ product }) => {
   const { category, size, name, price, image, alt, description, onSale, salePrice } = product;
+  const imageUrl = image 
+    ? new URL(`../../../assets/images/categorias/${image}`, import.meta.url).href 
+    : null;
 
   return (
     <CardContainer>
@@ -23,7 +26,7 @@ export const ProductCard = ({ product }) => {
         {size && <SizeBadge>{size}</SizeBadge>}
         {image ? (
           <img
-            src={image}
+            src={imageUrl}
             alt={alt || name}
             loading="lazy" 
             aria-hidden
